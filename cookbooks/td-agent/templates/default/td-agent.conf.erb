@@ -1,0 +1,28 @@
+## File input
+## read apache logs continuously and tags td.apache.access
+<source>
+  type tail
+  format syslog
+  path /var/log/messages
+  tag message_log
+  pos_file /var/log/td-agent/messages.log.pos
+</source>
+
+## File output
+## match tag=local.** and write to file
+<match message_log>
+  type elasticsearch
+  host localhost
+  port 9200
+  type_name message_log
+  logstash_format true
+  logstash_prefix nginx_access
+  logstash_dateformat %Y%m
+  
+  buffer_type memory
+  buffer_chunk_limit 10m
+  buffer_queue_limit 10
+  flush_interval 1s
+  retry_limit 16
+  retry_wait 1s
+</match>
