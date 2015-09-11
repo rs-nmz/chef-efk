@@ -15,11 +15,15 @@ Prerequisite
 ・Chef Solo can perform system
 
 ・System Java program can be executed
+ 
  JRE/JDK >= 1.8.0_x (x >= 20)
+ 
  or
+ 
  JRE/JDK >= 1.7.0_x (x >= 55)
 
 ・HTTP server
+
  Apache >= 2.4.x (x >= 12)
 
 Usage
