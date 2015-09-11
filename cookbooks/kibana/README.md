@@ -1,4 +1,4 @@
-td-agent Cookbook
+Kibana Cookbook
 =================
 
 Overview
