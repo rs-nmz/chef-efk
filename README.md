@@ -6,22 +6,44 @@ Overview
 ------------
 These are recipes for building a system for visualizing the log by the fluentd, elasticsearch and kibana.
 
+Operating environment
+-----
+・CentOS 6.6
+
+Prerequisite
+-----
+・Chef Solo can perform system
+
+・System Java program can be executed
+ JRE/JDK >= 1.8.0_x (x >= 20)
+ or
+ JRE/JDK >= 1.7.0_x (x >= 55)
+
+・HTTP server
+ Apache >= 2.4.x (x >= 12)
+
 Usage
 -----
-Store the cookbooks.tar.gz to /tmp
+1. Store the cookbooks.tar.gz to /tmp
 
-sudo knife cookbook create td-agent -o /var/chef/cookbooks
+2. Create a cookbooks in the Repository (/var/chef).
 
-sudo knife cookbook create elasticsearch -o /var/chef/cookbooks
+ $sudo knife cookbook create td-agent -o /var/chef/cookbooks
 
-sudo knife cookbook create kibana -o /var/chef/cookbooks
+ $sudo knife cookbook create elasticsearch -o /var/chef/cookbooks
 
-mv /tmp/cookbooks.tar.gz /var/chef
+ $sudo knife cookbook create kibana -o /var/chef/cookbooks
 
-tar zxvf /var/chef/cookbooks.tar.gz
+3. To expand by moving the cookbook.tar.gz to /var/chef
 
-sudo chef-solo -o td-agent
+ $mv /tmp/cookbooks.tar.gz /var/chef
 
-sudo chef-solo -o elasticsearch
+ $tar zxvf /var/chef/cookbooks.tar.gz
 
-sudo chef-solo -o kibana
+4. Install
+
+ $sudo chef-solo -o elasticsearch
+
+ $sudo chef-solo -o td-agent
+
+ $sudo chef-solo -o kibana
