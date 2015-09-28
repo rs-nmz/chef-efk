@@ -8,14 +8,19 @@
 #
 
 filename1 = "elasticsearch-1.5.2.noarch.rpm"
-#filename2 = "java-1.8.0-openjdk-1.8.0.25-1.b17.el6.x86_64.rpm"
+filename2 = "mappings.sh"
+#filename3 = "java-1.8.0-openjdk-1.8.0.25-1.b17.el6.x86_64.rpm"
 
 cookbook_file "/tmp/#{filename1}" do
   source "#{filename1}"
 end
 
-#cookbook_file "/tmp/#{filename2}" do
-#  source "#{filename2}"
+cookbook_file "/tmp/#{filename2}" do
+  source "#{filename2}"
+end
+
+#cookbook_file "/tmp/#{filename3}" do
+#  source "#{filename3}"
 #end
 
 package "elasticsearch" do
@@ -41,6 +46,11 @@ service "elasticsearch" do
   action [:enable, :start]
 end
 
+execute "mappings.sh" do
+  user "root"
+  cwd "/tmp"
+  command "sh mappings.sh"
+end
 
 
 
