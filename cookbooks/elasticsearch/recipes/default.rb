@@ -17,6 +17,7 @@ end
 
 cookbook_file "/tmp/#{filename2}" do
   source "#{filename2}"
+  mode "0755"
 end
 
 #cookbook_file "/tmp/#{filename3}" do
