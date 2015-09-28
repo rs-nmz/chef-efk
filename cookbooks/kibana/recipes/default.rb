@@ -36,5 +36,5 @@ template "/var/www/html/kibana/config.js" do
   source "config.js.erb"
   owner "root"
   group "root"
-  mode 755
+  mode "0755"
 end
