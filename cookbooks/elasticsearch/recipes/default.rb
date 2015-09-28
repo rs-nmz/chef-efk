@@ -49,8 +49,7 @@ end
 
 execute "mappings.sh" do
   user "root"
-  cwd "/tmp"
-  command "sh mappings.sh"
+  command "sh /tmp/mappings.sh"
 end
 
 
