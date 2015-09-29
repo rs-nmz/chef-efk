@@ -28,26 +28,29 @@ Prerequisite
 
 Usage
 -----
-1. Store the cookbooks.tar.gz to /tmp
+1. Store the chef-efk-master.zip to /tmp
 
-2. Create a cookbooks in the Repository (/var/chef).
+2. Create a cookbooks in the Repository (/var/chef/chef-efk-master).
 
- $sudo knife cookbook create td-agent -o /var/chef/cookbooks
+ $ sudo knife cookbook create td-agent -o /var/chef/chef-efk-master/cookbooks
 
- $sudo knife cookbook create elasticsearch -o /var/chef/cookbooks
+ $ sudo knife cookbook create elasticsearch -o /var/chef/chef-efk-master/cookbooks
 
- $sudo knife cookbook create kibana -o /var/chef/cookbooks
+ $ sudo knife cookbook create kibana -o /var/chef/chef-efk-master/cookbooks
 
-3. To expand by moving the cookbook.tar.gz to /var/chef
+3. To expand by moving the chef-efk-master.zip to /var/chef
 
- $mv /tmp/cookbooks.tar.gz /var/chef
+ $ mv /tmp/chef-efk-master.zip /var/chef/chef-efk-master
 
- $tar zxvf /var/chef/cookbooks.tar.gz
+ $ unzip /var/chef/chef-efk-master.zip
 
-4. Install
+4. Store the packages necessary to files/default of each cookbook
+ * Refer to a README.md of each cookbook
 
- $sudo chef-solo -o elasticsearch
+5. Install using chef-solo
 
- $sudo chef-solo -o td-agent
+ $ sudo chef-solo -o elasticsearch
 
- $sudo chef-solo -o kibana
+ $ sudo chef-solo -o td-agent
+
+ $ sudo chef-solo -o kibana
