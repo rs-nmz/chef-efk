@@ -12,19 +12,21 @@ Operating environment
 
 Prerequisite
 -----
-・Chef Solo can perform system
+・Chef Solo can be executed
 
-・System Java program can be executed
+・Java program can be executed
  
- JRE/JDK >= 1.8.0_x (x >= 20)
+  JRE/JDK >= 1.8.0_x (x >= 20)
  
- or
+  or
  
- JRE/JDK >= 1.7.0_x (x >= 55)
+  JRE/JDK >= 1.7.0_x (x >= 55)
+ 
+・Dstat can be executed
 
 ・HTTP server
 
- Apache >= 2.4.x (x >= 12)
+  Apache >= 2.4.x (x >= 12)
 
 Usage
 -----
