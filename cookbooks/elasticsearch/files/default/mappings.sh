@@ -2,7 +2,7 @@
 
 curl -XPUT localhost:9200/_template/template_1 -d '
 {
-   "template" : "logstash-*",
+   "template" : "dstat-*",
    "mappings" : {
        "dstat": {
            "properties": {
