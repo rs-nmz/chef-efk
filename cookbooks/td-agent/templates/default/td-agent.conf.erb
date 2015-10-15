@@ -32,7 +32,7 @@
 <source>
   type dstat
   tag dstat
-  option -lcn
+  option -lcnm
   delay 5
 </source>
 
@@ -42,31 +42,37 @@
     type map
     tag  '"map.dstat.loadavg-short"'
     time time
-    record '{"value" => record["dstat"]["load avg"]["1m"], "stat" => "loadavg-short", "host" => record["hostname"]}'
+    record '{"value" => record["dstat"]["load_avg"]["1m"], "stat" => "loadavg-short", "host" => record["hostname"]}'
   </store>
   <store>
     type map
     tag  '"map.dstat.cpu-usr"'
     time time
-    record '{"value" => record["dstat"]["total cpu usage"]["usr"], "stat" => "cpu-usr", "host" => record["hostname"]}'
+    record '{"value" => record["dstat"]["total_cpu_usage"]["usr"], "stat" => "cpu-usr", "host" => record["hostname"]}'
   </store>
   <store>
     type map
     tag  '"map.dstat.cpu-sys"'
     time time
-    record '{"value" => record["dstat"]["total cpu usage"]["sys"], "stat" => "cpu-sys", "host" => record["hostname"]}'
+    record '{"value" => record["dstat"]["total_cpu_usage"]["sys"], "stat" => "cpu-sys", "host" => record["hostname"]}'
   </store>
   <store>
     type map
     tag  '"map.dstat.cpu-hiq"'
     time time
-    record '{"value" => record["dstat"]["total cpu usage"]["hiq"], "stat" => "cpu-hiq", "host" => record["hostname"]}'
+    record '{"value" => record["dstat"]["total_cpu_usage"]["hiq"], "stat" => "cpu-hiq", "host" => record["hostname"]}'
   </store>
   <store>
     type map
     tag  '"map.dstat.cpu-siq"'
     time time
-    record '{"value" => record["dstat"]["total cpu usage"]["siq"], "stat" => "cpu-siq", "host" => record["hostname"]}'
+    record '{"value" => record["dstat"]["total_cpu_usage"]["siq"], "stat" => "cpu-siq", "host" => record["hostname"]}'
+  </store>
+  <store>
+    type map
+    tag  '"map.dstat.mem-used"'
+    time time
+    record '{"value" => record["dstat"]["memory_usage"]["used"], "stat" => "mem-used", "host" => record["hostname"]}'
   </store>
   <store>
     type map
@@ -88,7 +94,8 @@
   host            localhost
   port            9200
   logstash_format true
-  logstash_prefix logstash
+  logstash_prefix dstat
+  logstash_dateformat %Y%m
   flush_interval  5s
 </match>
 
