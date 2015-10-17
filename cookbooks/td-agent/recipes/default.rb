@@ -34,11 +34,18 @@ directory '/etc/td-agent/' do
   action :create
 end
 
+directory '/etc/td-agent/plugin' do
+  owner  'td-agent'
+  group  'td-agent'
+  mode   '0755'
+  action :create
+end
+
 filename1 = "td-agent-2.2.0-0.x86_64.rpm"
 filename2 = "fluent-plugin-elasticsearch-0.9.0.gem"
 filename3 = "fluent-plugin-dstat-0.3.1.gem"
 filename4 = "fluent-plugin-map-0.0.5.gem"
-
+filename5 = "parser_postgres.rb"
 
 cookbook_file "/tmp/#{filename1}" do
   source "#{filename1}"
@@ -115,6 +122,10 @@ gem_package "fluentd-map" do
   source "/tmp/#{filename4}"
 end
 
+cookbook_file "/etc/td-agent/plugin/#{filename5}" do
+  source "#{filename5}"
+  mode "0755"
+end
 
 template "/etc/td-agent/td-agent.conf" do
   mode "0644"
@@ -127,6 +138,3 @@ service "td-agent" do
   action [:enable, :start]
   subscribes :restart, resources(:template => "/etc/td-agent/td-agent.conf")
 end
-
-
-
