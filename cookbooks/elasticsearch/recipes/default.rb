@@ -49,7 +49,7 @@ end
 
 execute "mappings.sh" do
   user "root"
-  command "sh /tmp/mappings.sh"
+  command "sleep 60 ; sh /tmp/mappings.sh"
 end
 
 
