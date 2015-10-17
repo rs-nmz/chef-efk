@@ -1,5 +1,4 @@
 #!/bin/bash
-
 curl -XPUT localhost:9200/_template/template_1 -d '
 {
    "template" : "dstat-*",
