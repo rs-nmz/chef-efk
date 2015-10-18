@@ -52,3 +52,7 @@ end
 cookbook_file "/var/www/html/kibana/app/dashboards/#{filename4}" do
   source "#{filename4}"
 end
+
+cookbook_file "/var/www/html/kibana/app/dashboards/#{filename5}" do
+  source "#{filename5}"
+end
