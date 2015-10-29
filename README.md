@@ -44,7 +44,7 @@ Usage
 
  $ unzip -d /tmp /tmp/chef-efk-master.zip
 
- $ cp -r /tmp/chef-efk-master/cookbooks /var/chef
+ $ sudo cp -r /tmp/chef-efk-master/cookbooks /var/chef
 
 4. Store the packages necessary to files/default of each cookbook
  * Refer to a README.md of each cookbook
