@@ -11,6 +11,9 @@ filename2="Cpu-Usage-Template"
 filename3="Mem-Usage-Template"
 filename4="Loadavg-Short-Template"
 filename5="Net-Usage-Template"
+filename6="Syslog-Template"
+filename7="Postgresql-Level-Template"
+filename8="Postgresql-Duration-Template"
 
 cookbook_file "/tmp/#{filename1}" do
   source "#{filename1}"
@@ -55,4 +58,16 @@ end
 
 cookbook_file "/var/www/html/kibana/app/dashboards/#{filename5}" do
   source "#{filename5}"
+end
+
+cookbook_file "/var/www/html/kibana/app/dashboards/#{filename6}" do
+  source "#{filename6}"
+end
+
+cookbook_file "/var/www/html/kibana/app/dashboards/#{filename7}" do
+  source "#{filename7}"
+end
+
+cookbook_file "/var/www/html/kibana/app/dashboards/#{filename8}" do
+  source "#{filename8}"
 end
