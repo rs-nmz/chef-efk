@@ -28,6 +28,31 @@
 </match>
 
 
+<source>
+  type tail
+  format postgres
+  path /var/log/postgres/postgresql.csv
+  tag postgres_log
+  pos_file /var/log/td-agent/postgres.log.pos
+</source>
+
+<match postgres_log>
+  type elasticsearch
+  host localhost
+  port 9200
+  type_name postgres_log
+  logstash_format true
+  logstash_prefix postgres
+  logstash_dateformat %Y%m
+
+  buffer_type memory
+  buffer_chunk_limit 10m
+  buffer_queue_limit 10
+  flush_interval 1s
+  retry_limit 16
+  retry_wait 1s
+</match>
+
 
 <source>
   type dstat
