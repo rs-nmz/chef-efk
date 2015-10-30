@@ -70,6 +70,13 @@ file '/var/log/td-agent/messages.log.pos' do
   action :create_if_missing
 end
 
+file '/var/log/td-agent/postgres.log.pos' do
+  owner 'td-agent'
+  group 'td-agent'
+  mode 0755
+  action :create_if_missing
+end
+
 directory '/var/log/td-agent' do
   owner 'td-agent'
   group 'td-agent'
