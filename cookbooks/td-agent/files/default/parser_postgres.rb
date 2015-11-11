@@ -13,7 +13,7 @@ module Fluent
       # このプラグインをパーサプラグインとして登録する
       Plugin.register_parser('postgres', self)
 
-      FORMAT = /^(?<time>[^",]*),"?(?<user_name>(?:[^"]|"")*)"?,"?(?<database_name>(?:[^"]|"")*)"?,(?<process_id>[^",]*),"?(?<connection_from>(?:[^"]|"")*)"?,(?<session_id>[^",]*),(?<session_line_num>[^",]*),"?(?<command_tag>(?:[^"]|"")*)"?,(?<session_start_time>[^",]*),(?<virtual_transaction_id>[^",]*),(?<transaction_id>[^",]*),(?<error_severity>[^",]*),(?<sql_state_code>[^",]*),"?(?<message>(?:[^"]|"")*)"?,(?<detail>[^",]*),"?(?<hint>(?:[^"]|"")*)"?,(?<internal_query>[^",]*),(?<internal_query_pos>[^",]*),(?<context>[^",]*),(?<query>[^",]*),(?<query_pos>[^",]*),(?<location>[^",]*),"?(?<application_name>(?:[^"]|"")*)"?$/
+      FORMAT = /^(?<time>[^",]*),"?(?<user_name>(?:[^"]|"")*)"?,"?(?<database_name>(?:[^"]|"")*)"?,(?<process_id>[^",]*),"?(?<connection_from>(?:[^"]|"")*)"?,(?<session_id>[^",]*),(?<session_line_num>[^",]*),"?(?<command_tag>(?:[^"]|"")*)"?,(?<session_start_time>[^",]*),(?<virtual_transaction_id>[^",]*),(?<transaction_id>[^",]*),(?<error_severity>[^",]*),(?<sql_state_code>[^",]*),"?(?<message>(?:[^"]|"")*)"?,"?(?<detail>[^"]*)"?,"?(?<hint>(?:[^"]|"")*)"?,(?<internal_query>[^",]*),(?<internal_query_pos>[^",]*),(?<context>[^",]*),(?<query>[^",]*),(?<query_pos>[^",]*),(?<location>[^",]*),"?(?<application_name>(?:[^"]|"")*)"?$/
       TIME_FORMAT = "%Y-%m-%d %H:%M:%S.%L %Z"
 
 
