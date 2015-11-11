@@ -9,7 +9,8 @@
 
 filename1 = "elasticsearch-1.5.2.noarch.rpm"
 filename2 = "mappings.sh"
-#filename3 = "java-1.8.0-openjdk-1.8.0.25-1.b17.el6.x86_64.rpm"
+filename3 = "postgres_log.json"
+#filename4 = "java-1.8.0-openjdk-1.8.0.25-1.b17.el6.x86_64.rpm"
 
 cookbook_file "/tmp/#{filename1}" do
   source "#{filename1}"
@@ -21,7 +22,7 @@ cookbook_file "/tmp/#{filename2}" do
 end
 
 #cookbook_file "/tmp/#{filename3}" do
-#  source "#{filename3}"
+#  source "#{filename4}"
 #end
 
 package "elasticsearch" do
@@ -41,6 +42,23 @@ template "/etc/elasticsearch/elasticsearch.yml" do
   mode 644
 end
 
+directory '/etc/elasticsearch/mappings/' do
+  owner 'root'
+  group 'root'
+  mode '0755'
+  action :create
+end
+
+directory '/etc/elasticsearch/mappings/_default' do
+  owner 'root'
+  group 'root'
+  mode '0755'
+  action :create
+end
+
+cookbook_file "/etc/elasticsearch/mappings/_default/#{filename3}" do
+  source "#{filename3}"
+end
 
 service "elasticsearch" do
   supports :status => true, :restart => true, :reload => true
