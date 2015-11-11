@@ -1,0 +1,14 @@
+{
+    "postgres_log" : {
+      "properties" : {
+        "time" : {
+          "type" : "date",
+          "format" : "YYYY-MM-dd HH:mm:ss.SSS zzz"
+        },
+        "message" : {
+          "type" : "string",
+          "index" : "not_analyzed"
+        }
+      }
+    }
+}
