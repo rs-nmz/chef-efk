@@ -7,13 +7,9 @@
 #
 
 filename1="kibana-3.1.2.tar.gz"
-filename2="Cpu-Usage-Template"
-filename3="Mem-Usage-Template"
-filename4="Loadavg-Short-Template"
-filename5="Net-Usage-Template"
-filename6="Syslog-Template"
-filename7="Postgresql-Level-Template"
-filename8="Postgresql-Duration-Template"
+filename2="Dstat_Dashboard"
+filename3="Syslog_Dashboard"
+filename4="PosgreSQL_Dashboard"
 
 cookbook_file "/tmp/#{filename1}" do
   source "#{filename1}"
@@ -56,18 +52,3 @@ cookbook_file "/var/www/html/kibana/app/dashboards/#{filename4}" do
   source "#{filename4}"
 end
 
-cookbook_file "/var/www/html/kibana/app/dashboards/#{filename5}" do
-  source "#{filename5}"
-end
-
-cookbook_file "/var/www/html/kibana/app/dashboards/#{filename6}" do
-  source "#{filename6}"
-end
-
-cookbook_file "/var/www/html/kibana/app/dashboards/#{filename7}" do
-  source "#{filename7}"
-end
-
-cookbook_file "/var/www/html/kibana/app/dashboards/#{filename8}" do
-  source "#{filename8}"
-end
