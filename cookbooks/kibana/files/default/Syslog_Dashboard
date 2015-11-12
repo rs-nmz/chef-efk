@@ -23,7 +23,7 @@
         },
         "2": {
           "id": 2,
-          "color": "#AEA2E0",
+          "color": "#806EB7",
           "alias": "",
           "pin": false,
           "type": "lucene",
@@ -92,7 +92,7 @@
           "arrangement": "horizontal",
           "chart": "pie",
           "counter_pos": "below",
-          "title": "Document types",
+          "title": "Ident pie chart",
           "spyable": true,
           "tmode": "terms",
           "tstat": "total",
@@ -172,7 +172,7 @@
             "value_type": "cumulative",
             "query_as_alias": true
           },
-          "title": "Graph"
+          "title": "Events over time"
         }
       ],
       "notice": false
@@ -308,7 +308,8 @@
         "1d"
       ],
       "timefield": "@timestamp",
-      "enable": true
+      "enable": true,
+      "now": false
     }
   ],
   "refresh": false
