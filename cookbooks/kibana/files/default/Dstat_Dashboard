@@ -32,7 +32,7 @@
         },
         "3": {
           "id": 3,
-          "color": "#EF843C",
+          "color": "#D683CE",
           "alias": "",
           "pin": false,
           "type": "lucene",
@@ -88,8 +88,21 @@
       ]
     },
     "filter": {
-      "list": {},
-      "ids": []
+      "list": {
+        "0": {
+          "type": "time",
+          "field": "@timestamp",
+          "from": "now-1h",
+          "to": "now",
+          "mandate": "must",
+          "active": true,
+          "alias": "",
+          "id": 0
+        }
+      },
+      "ids": [
+        0
+      ]
     }
   },
   "rows": [
@@ -101,11 +114,11 @@
       "collapsable": true,
       "panels": [
         {
-          "span": 12,
+          "span": 6,
           "editable": true,
           "type": "histogram",
           "loadingEditor": false,
-          "mode": "mean",
+          "mode": "max",
           "time_field": "@timestamp",
           "value_field": "value",
           "x-axis": true,
@@ -150,8 +163,8 @@
             "1y"
           ],
           "lines": true,
-          "fill": 1,
-          "linewidth": 3,
+          "fill": 2,
+          "linewidth": 2,
           "points": false,
           "pointradius": 5,
           "bars": false,
@@ -174,7 +187,7 @@
           "title": "Events over time (loadavg)"
         },
         {
-          "span": 12,
+          "span": 6,
           "editable": true,
           "type": "histogram",
           "loadingEditor": false,
@@ -226,8 +239,8 @@
             "1y"
           ],
           "lines": true,
-          "fill": 1,
-          "linewidth": 3,
+          "fill": 2,
+          "linewidth": 2,
           "points": false,
           "pointradius": 5,
           "bars": false,
@@ -250,7 +263,7 @@
           "title": "Events over time (cpu-usage)"
         },
         {
-          "span": 12,
+          "span": 6,
           "editable": true,
           "type": "histogram",
           "loadingEditor": false,
@@ -300,7 +313,7 @@
           ],
           "lines": true,
           "fill": 1,
-          "linewidth": 3,
+          "linewidth": 2,
           "points": false,
           "pointradius": 5,
           "bars": false,
@@ -323,7 +336,7 @@
           "title": "Events over time (mem-usage)"
         },
         {
-          "span": 12,
+          "span": 6,
           "editable": true,
           "type": "histogram",
           "loadingEditor": false,
@@ -373,8 +386,8 @@
             "1y"
           ],
           "lines": true,
-          "fill": 1,
-          "linewidth": 3,
+          "fill": 2,
+          "linewidth": 2,
           "points": false,
           "pointradius": 5,
           "bars": false,
@@ -504,7 +517,7 @@
     {
       "type": "filtering",
       "collapse": true,
-      "notice": false,
+      "notice": true,
       "enable": true
     }
   ],
@@ -538,8 +551,10 @@
         "1d"
       ],
       "timefield": "@timestamp",
-      "enable": true
+      "enable": true,
+      "now": true,
+      "filter_id": 0
     }
   ],
-  "refresh": false
+  "refresh": "10s"
 }
