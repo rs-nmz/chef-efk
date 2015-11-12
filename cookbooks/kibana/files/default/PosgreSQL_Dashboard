@@ -1,20 +1,50 @@
 {
-  "title": "PostgreSQL Dashboard",
+  "title": "PostgreSQL_Dashboard",
   "services": {
     "query": {
       "list": {
         "0": {
-          "query": "duration",
+          "query": "users",
           "alias": "",
           "color": "#7EB26D",
           "id": 0,
           "pin": false,
           "type": "lucene",
           "enable": true
+        },
+        "1": {
+          "id": 1,
+          "color": "#EAB839",
+          "alias": "",
+          "pin": false,
+          "type": "lucene",
+          "enable": true,
+          "query": "posts"
+        },
+        "2": {
+          "id": 2,
+          "color": "#6ED0E0",
+          "alias": "",
+          "pin": false,
+          "type": "lucene",
+          "enable": true,
+          "query": "comments"
+        },
+        "3": {
+          "id": 3,
+          "color": "#EF843C",
+          "alias": "",
+          "pin": false,
+          "type": "lucene",
+          "enable": true,
+          "query": "duration"
         }
       },
       "ids": [
-        0
+        0,
+        1,
+        2,
+        3
       ]
     },
     "filter": {
@@ -22,15 +52,26 @@
         "0": {
           "type": "terms",
           "field": "_type",
-          "value": "postgresql",
+          "value": "postgres_log",
           "mandate": "must",
           "active": true,
           "alias": "",
           "id": 0
+        },
+        "2": {
+          "type": "time",
+          "from": "2015-11-05T10:36:44.162Z",
+          "to": "2015-11-05T10:58:24.686Z",
+          "field": "time",
+          "mandate": "must",
+          "active": true,
+          "alias": "",
+          "id": 2
         }
       },
       "ids": [
-        0
+        0,
+        2
       ]
     }
   },
@@ -43,12 +84,47 @@
       "collapsable": true,
       "panels": [
         {
-          "span": 12,
+          "error": false,
+          "span": 5,
+          "editable": false,
+          "type": "terms",
+          "loadingEditor": false,
+          "field": "message",
+          "exclude": [],
+          "missing": false,
+          "other": false,
+          "size": 3,
+          "order": "count",
+          "style": {
+            "font-size": "10pt"
+          },
+          "donut": false,
+          "tilt": false,
+          "labels": false,
+          "arrangement": "horizontal",
+          "chart": "pie",
+          "counter_pos": "above",
+          "spyable": true,
+          "queries": {
+            "mode": "all",
+            "ids": [
+              0,
+              1,
+              2,
+              3
+            ]
+          },
+          "tmode": "terms",
+          "tstat": "total",
+          "valuefield": ""
+        },
+        {
+          "span": 7,
           "editable": true,
           "type": "histogram",
           "loadingEditor": false,
           "mode": "count",
-          "time_field": "@timestamp",
+          "time_field": "time",
           "value_field": null,
           "x-axis": true,
           "y-axis": true,
@@ -61,7 +137,10 @@
           "queries": {
             "mode": "all",
             "ids": [
-              0
+              0,
+              1,
+              2,
+              3
             ]
           },
           "annotate": {
@@ -74,9 +153,9 @@
               "desc"
             ]
           },
-          "auto_int": false,
+          "auto_int": true,
           "resolution": 100,
-          "interval": "1m",
+          "interval": "10s",
           "intervals": [
             "auto",
             "1s",
@@ -144,7 +223,10 @@
             "font-size": "9pt"
           },
           "overflow": "min-height",
-          "fields": [],
+          "fields": [
+            "time",
+            "message"
+          ],
           "highlight": [],
           "sortable": true,
           "header": true,
@@ -153,7 +235,10 @@
           "queries": {
             "mode": "all",
             "ids": [
-              0
+              0,
+              1,
+              2,
+              3
             ]
           },
           "field_list": true,
@@ -173,7 +258,7 @@
   "index": {
     "interval": "none",
     "pattern": "[logstash-]YYYY.MM.DD",
-    "default": "_all",
+    "default": "postgres-*",
     "warm_fields": false
   },
   "style": "dark",
@@ -201,7 +286,11 @@
       "query": "*",
       "pinned": true,
       "history": [
-        "duration"
+        "duration",
+        "comments",
+        "posts",
+        "users",
+        "*"
       ],
       "remember": 10,
       "enable": true
@@ -209,7 +298,7 @@
     {
       "type": "filtering",
       "collapse": true,
-      "notice": true,
+      "notice": false,
       "enable": true
     }
   ],
@@ -242,8 +331,10 @@
         "2h",
         "1d"
       ],
-      "timefield": "@timestamp",
-      "enable": true
+      "timefield": "time",
+      "enable": true,
+      "now": false,
+      "filter_id": 1
     }
   ],
   "refresh": false
